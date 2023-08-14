@@ -19,9 +19,11 @@ paths:
                 - id: 1
                   name: JeanMarc
                   email: hei.jean.3@gmail.com
+                  birthdate: 2005-02-15
                 - id: 2
                   name: Marc Jean
                   email: hei.marc@gmail.com
+                  birthdate: 2003-06-05
     post:
       requestBody:
         description: Student object to be added
@@ -37,10 +39,14 @@ paths:
                   type: string
                 email:
                   type: string
+                birthdate:
+                  type: string
+                  format: Date
               example:
                 id: 4
                 name: fictif person
                 email: hei.test@gmail.com
+                birthdate: 1998-07-25
       responses:
         "201":
           description: Student was add successfully
@@ -58,3 +64,7 @@ paths:
                   email:
                     type: string
                     example: hei.test@gmail.com
+                  birthdate:
+                    type: string
+                    format: date
+                    example: "1998-07-25"

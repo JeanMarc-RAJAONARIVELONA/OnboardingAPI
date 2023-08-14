@@ -18,9 +18,11 @@ Pour ajouter un nouvel étudiant, faites une demande POST au point de terminaiso
     - id: L'identifiant de l'étudiant.
     - name: Le nom de l'étudiant.
     - email: L'adresse e-mail de l'étudiant.
+    - birthdate: LE date d'anniversaire de l'étudiant
 
 ### La réponse à une demande POST réussie sera un objet JSON avec les propriétés suivantes :
 
     - id: L'identifiant de l'étudiant nouvellement créé.
     - name: Le nom de l'étudiant nouvellement créé.
     - email: L'adresse e-mail de l'étudiant nouvellement créé.
+    - birthdate: LE date d'anniversaire de l'étudiant
