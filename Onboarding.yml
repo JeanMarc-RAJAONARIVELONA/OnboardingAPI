@@ -1,0 +1,60 @@
+openapi: "3.0.3"
+info:
+  title: On Boarding API
+  description: STD22043
+  contact:
+    email: hei.jean.3@gmail.com
+  version: "1.2"
+servers:
+  - url: https://STD22043.com
+paths:
+  /Student:
+    get:
+      responses:
+        "200":
+          description: your request was Successfull
+          content:
+            application/json:
+              example:
+                - id: 1
+                  name: JeanMarc
+                  email: hei.jean.3@gmail.com
+                - id: 2
+                  name: Marc Jean
+                  email: hei.marc@gmail.com
+    post:
+      requestBody:
+        description: Student object to be added
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+                email:
+                  type: string
+              example:
+                id: 4
+                name: fictif person
+                email: hei.test@gmail.com
+      responses:
+        "201":
+          description: Student was add successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                  name:
+                    type: string
+                    example: fictif person
+                  email:
+                    type: string
+                    example: hei.test@gmail.com
