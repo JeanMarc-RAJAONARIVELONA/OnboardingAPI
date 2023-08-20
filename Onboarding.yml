@@ -6,137 +6,99 @@ info:
     email: hei.jean.3@gmail.com
   version: "1.2"
 servers:
-  - url: https://STD22043.com
+  - url: https://STD22043.com/api/v1
 paths:
-  /Student:
+  /students:
     get:
+      description: Get all students
       responses:
         "200":
-          description: your request was Successfull
-          content:
-            application/json:
-              example:
-                - id: 1
-                  name: JeanMarc
-                  email: hei.jean.3@gmail.com
-                  birthdate: 2005-02-15
-                - id: 2
-                  name: Marc Jean
-                  email: hei.marc@gmail.com
-                  birthdate: 2003-06-05
-    post:
-      requestBody:
-        description: Student object to be added
-        required: false
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                email:
-                  type: string
-                birthdate:
-                  type: string
-                  format: Date
-              example:
-                id: 4
-                name: fictif person
-                email: hei.test@gmail.com
-                birthdate: 1998-07-25
-      responses:
-        "201":
-          description: Student was add successfully
+          description: Success
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 4
-                  name:
-                    type: string
-                    example: fictif person
-                  email:
-                    type: string
-                    example: hei.test@gmail.com
-                  birthdate:
-                    type: string
-                    format: date
-                    example: "1998-07-25"
-    put:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Student"
+    post:
+      description: Create a new student
       requestBody:
-        description: Student object to be updated
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                id:
-                  type: integer
-                name:
-                  type: string
-                email:
-                  type: string
-                birthdate:
-                  type: string
-                  format: Date
-              example:
-                id: 4
-                name: fictif person
-                email: hei.test@gmail.com
-                birthdate: 1998-07-25
+              $ref: "#/components/schemas/Student"
       responses:
-        "200":
-          description: Student was updated successfully
+        "201":
+          description: Created
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 4
-                  name:
-                    type: string
-                    example: fictif person
-                  email:
-                    type: string
-                    example: hei.test@gmail.com
-                  birthdate:
-                    type: string
-                    format: date
-                    example: "1998-07-25"
-    delete:
+                $ref: "#/components/schemas/Student"
+  /students/{id}:
+    get:
+      description: Get a student by ID
       parameters:
-        - in: path
-          name: id
+        - name: id
+          in: path
           required: true
           schema:
             type: integer
       responses:
         "200":
-          description: Student was deleted successfully
+          description: Success
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    example: 4
-                  name:
-                    type: string
-                    example: fictif person
-                  email:
-                    type: string
-                    example: hei.test@gmail.com
-                  birthdate:
-                    type: string
-                    format: date
-                    example: "1998-07-25"
+                $ref: "#/components/schemas/Student"
+    put:
+      description: Update a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Student"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Student"
+    delete:
+      description: Delete a student
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Jean Marc
+        email:
+          type: string
+          example: hei.jean.3@gmail.com
+        birthdate:
+          type: string
+          format: date
+          example: 2005-02-15
