@@ -35,22 +35,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Student"
-  /students/{id}:
-    get:
-      description: Get a student by ID
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Student"
     put:
       description: Update a student
       parameters:
@@ -83,6 +67,33 @@ paths:
       responses:
         "200":
           description: Deleted
+  /teachers:
+    get:
+      description: Get all teachers
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Teacher"
+    post:
+      description: Create a new teacher
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Teacher"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Teacher"
 
 components:
   schemas:
@@ -102,3 +113,29 @@ components:
           type: string
           format: date
           example: 2005-02-15
+    Teacher:
+      type: object
+      properties:
+        name:
+          type: string
+          example: RAMAROZAKA
+        firstname:
+          type: string
+          example: Toky
+        courses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Course"
+
+    Course:
+      type: object
+      properties:
+        course_name:
+          type: string
+          example: Algorithme
+        course_code:
+          type: string
+          example: Prog1
+        duration:
+          type: string
+          example: 4h
