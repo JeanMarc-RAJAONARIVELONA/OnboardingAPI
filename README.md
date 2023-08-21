@@ -2,6 +2,10 @@
 
 Ceci contient mon devoir API concernant l'exercie OnboardingAPI
 
+# Petstore Link
+
+[You can see here the UI in Petsore](https://petstore.swagger.io/?url=https://gist.githubusercontent.com/JeanMarc-RAJAONARIVELONA/be234a2576a12e4124b0efd087207486/raw/abeaddec3a0667c41448cad97b9be8c8a9cb8c73/gistfile1.txt)
+
 ## Cette API fournit deux points de terminaison :
 
 - /Student : Obtenir une liste de tous les étudiants.
