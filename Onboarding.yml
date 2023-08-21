@@ -6,11 +6,13 @@ info:
     email: hei.jean.3@gmail.com
   version: "1.2"
 servers:
-  - url: https://STD22043.com/api/v1
+  - url: https://STD22043.com/api/v2
 paths:
   /students:
     get:
       description: Get all students
+      tags:
+        - Students
       responses:
         "200":
           description: Success
@@ -22,6 +24,8 @@ paths:
                   $ref: "#/components/schemas/Student"
     post:
       description: Create a new student
+      tags:
+        - Students
       requestBody:
         required: true
         content:
@@ -37,6 +41,8 @@ paths:
                 $ref: "#/components/schemas/Student"
     put:
       description: Update a student
+      tags:
+        - Students
       parameters:
         - name: id
           in: path
@@ -58,6 +64,8 @@ paths:
                 $ref: "#/components/schemas/Student"
     delete:
       description: Delete a student
+      tags:
+        - Students
       parameters:
         - name: id
           in: path
@@ -70,6 +78,8 @@ paths:
   /teachers:
     get:
       description: Get all teachers
+      tags:
+        - teachers
       responses:
         "200":
           description: Success
@@ -81,6 +91,8 @@ paths:
                   $ref: "#/components/schemas/Teacher"
     post:
       description: Create a new teacher
+      tags:
+        - teachers
       requestBody:
         required: true
         content:
